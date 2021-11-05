@@ -1,12 +1,17 @@
-import express from 'express';
+import express from 'express'
 
-const app = express();
-const port = 3000;
+const app = express()
+const PORT = 3000
 
-app.get('/', (req, res) => {
-    res.send('Template Typescript Express app!');
+app.use(express.json())
+
+app.get('/ping', (req, res) => {
+  const pong = {
+    ping: req.query.ping || 'To ping, or not to ping; that is the question.',
+    received_at: new Date(),
+  }
+
+  res.json(pong)
 })
 
-app.listen(port, () => {
-    console.log(`Server listening on port=${port}`);
-})
+app.listen(PORT)
