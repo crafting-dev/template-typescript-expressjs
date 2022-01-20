@@ -49,33 +49,35 @@ The following [App Definition](https://docs.sandboxes.cloud/docs/app-definition)
 
 ```yaml
 endpoints:
-  - name: api
-    http:
-      routes:
-        - pathPrefix: '/api/'
-          backend:
-            target: ts-express
-            port: api
+- name: api
+  http:
+    routes:
+    - pathPrefix: "/"
+      backend:
+        target: ts-express
+        port: api
+    authProxy:
+      disabled: true
 workspaces:
-  - name: ts-express
-    description: Template backend using Ts/Express
-    ports:
-      - name: api
-        port: 3000
-        protocol: HTTP/TCP
-    checkouts:
-      - path: backend
-        repo:
-          git: https://github.com/crafting-dev/template-typescript-expressjs
-    packages:
-      - name: nodejs
-        version: 16.12.0
+- name: ts-express
+  description: Template backend using Ts/Express
+  ports:
+  - name: api
+    port: 3000
+    protocol: HTTP/TCP
+  checkouts:
+  - path: backend
+    repo:
+      git: https://github.com/crafting-dev/template-typescript-expressjs
+  packages:
+  - name: nodejs
+    version: 16.12.0
 dependencies:
-  - name: mysql
-    serviceType: mysql
-    version: '8'
-    properties:
-      database: superhero
-      password: batman
-      username: brucewayne
+- name: mysql
+  serviceType: mysql
+  version: '8'
+  properties:
+    database: superhero
+    password: batman
+    username: brucewayne
 ```
