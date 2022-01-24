@@ -1,9 +1,7 @@
 node_modules
-
-# Ignore artifacts:
 dist
 build
 coverage
-
 *.css
 *.svg
+*.md
